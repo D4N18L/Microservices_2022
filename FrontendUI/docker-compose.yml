@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  frontend-api:
+    container_name: container_frontend_api
+    build:
+      context: .
+    ports:
+      - "5003:5003"
+    restart: always

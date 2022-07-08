@@ -1,0 +1,22 @@
+{% extends "generic_2.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block pageContent %}
+    <div class="container">
+        <div class ="row">
+            <div class="col-md-12">
+                <h1>Welcome to CrownPass System</h1>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-6">
+                        <a href="{{ url_for('FE.display_qr') }}" class="btn btn-primary">Display Pass</a>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "generic_2.html" %}
+
+{% from "form/form.html" import render_field %}
+
+{% block title %}Register{% endblock %}
+
+{% block pageContent %}
+
+<h2>Register</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {{ form.csrf_token() }}
+    {{ render_field(form.username) }}
+    {{ render_field(form.first_name) }}
+    {{ render_field(form.last_name) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.address) }}
+    {{ render_field(form.phone) }}
+    {{ render_field(form.password) }}
+
+    {{ form.submit(class_="btn btn-success pull-right") }}
+    </form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "generic.html" %}
+
+{% block content %}
+<div class="container" id="outer-container">
+
+  {% include "guides.html" %}
+  {% block pageContent %}{% endblock %}
+
+</div>
+{% endblock %}

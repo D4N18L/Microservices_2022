@@ -1,0 +1,18 @@
+{% extends "generic_2.html" %}
+
+{% from "form/form.html" import render_field %}
+{% block title %}Login{% endblock %}
+
+
+{% block pageContent %}
+
+    <h1>Login</h1>
+
+    <form method="post">
+        {{form.hidden_tag()}}
+        {{render_field(form.username)}}
+        {{render_field(form.password)}}
+        {{form.submit(class="btn btn-success pull-right")}}
+    </form>
+{% endblock %}
+

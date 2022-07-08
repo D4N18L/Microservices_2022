@@ -1,0 +1,64 @@
+version: '3.8'
+
+volumes:
+  register_db_vol:
+  display_db_vol:
+
+
+services:
+    register-api:
+        container_name: container_register_serv
+        build:
+            context: ../register_serv
+        ports:
+            - "5000:5000"
+        depends_on:
+                - register-db
+        restart: always
+
+    register-db:
+        container_name: container_register_db
+        image: mysql:8.0.29
+        ports:
+        - "32000:3306"
+        environment:
+          MYSQL_ROOT_PASSWORD: "trick123"
+          MYSQL_DATABASE: "register_microservice"
+          MYSQL_USER: "bigdata2022"
+          MYSQL_PASSWORD: "trick123"
+
+        volumes:
+        - register_db_vol:/var/lib/mysql
+
+    display-api:
+        container_name: container_display_serv
+        build:
+            context: ../display_serv
+        ports:
+            - "5001:5001"
+        depends_on:
+                - display-db
+
+        restart: always
+
+    display-db:
+        container_name: container_display_db
+        image: mysql:8.0.29
+        ports:
+        - "32001:3306"
+        environment:
+          MYSQL_ROOT_PASSWORD: "trick123"
+          MYSQL_DATABASE: "display_microservice"
+          MYSQL_USER: "bigdata2022"
+          MYSQL_PASSWORD: "trick123"
+
+        volumes:
+        - display_db_vol:/var/lib/mysql
+
+    frontend-api:
+        container_name: container_frontend_api
+        build:
+            context: .
+        ports:
+            - "5003:5003"
+        restart: always
