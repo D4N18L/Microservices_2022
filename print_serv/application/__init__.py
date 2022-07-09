@@ -10,7 +10,7 @@ def create_app():
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
-    environment_configuration = os.environ['CONFIGURATION_SETUP']
+    environment_configuration = os.environ.get('CONFIGURATION_SETUP')
     app.config.from_object(environment_configuration)
     app.config.update(PRINTED_CODE_LOCATION=os.path.join(dir_path, "printed_codes")) # printed_codes is the path to the printed code
 
